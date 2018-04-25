@@ -1,9 +1,9 @@
 CC=gcc
 
 INCLUDES=-Iinclude
-LIBS=-lSDL2 -lSDL2_ttf
+LIBS=-lm -lSDL2 -lSDL2_ttf
 
-SRCS=main.c text.c util.c window.c
+SRCS=main.c text.c util.c window.c matrix.c nn.c
 OBJS=$(SRCS:.c=.o)
 
 TARGET=predictor
@@ -18,4 +18,3 @@ $(TARGET): $(OBJS)
 
 clean:
 	$(RM) *.o $(TARGET)
-
