@@ -105,33 +105,3 @@ Matrix *nn_predict(NeuralNetwork *nn, float *ax) {
     return nn->o;
 }
 
-/*
- *  gcc -Iinclude -o nn nn.c matrix.c -lm
- */
-#include <time.h>
-int main(void) {
-    srand(time(NULL));
-    NeuralNetwork *nn = create_nn(2, 2, 1);
-    for(int i = 0; i < 50000; i++) {
-        int a = rand() & 1;
-        int b = rand() & 1;
-        int y = a ^ b;
-        float ax[] = { a, b };
-        float ay[] = { y };
-        nn_predict(nn, ax);
-        nn_train(nn, ay);
-    }
-
-    float x1[] = { 0.0, 0.0 };
-    float x2[] = { 1.0, 0.0 };
-    float x3[] = { 0.0, 1.0 };
-    float x4[] = { 1.0, 1.0 };
-    puts("[0,0] => [0]:");
-    print_matrix(nn_predict(nn, x1));
-    puts("[1,0] => [1]:");
-    print_matrix(nn_predict(nn, x2));
-    puts("[0,1] => [1]:");
-    print_matrix(nn_predict(nn, x3));
-    puts("[1,1] => [0]:");
-    print_matrix(nn_predict(nn, x4));
-}
