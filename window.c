@@ -27,13 +27,18 @@ void draw_rect(SDL_Renderer *rend, SDL_Rect *rect, SDL_Color color) {
 
 int handle_events(void) {
     SDL_Event event;
-    int mouse_x = -2;
+    int mouse_x = -3;
     while (SDL_PollEvent(&event)) {
         switch(event.type) {
             case SDL_QUIT:
                 return -1;
             case SDL_MOUSEBUTTONDOWN:
                 SDL_GetMouseState(&mouse_x, NULL);
+                break;
+            case SDL_KEYDOWN:
+                if (event.key.keysym.sym == SDLK_SPACE) {
+                    mouse_x = -2;
+                }
                 break;
         }
     }
