@@ -16,7 +16,7 @@ typedef struct NeuralNetwork {
     Matrix *b_o;
 } NeuralNetwork;
 
-NeuralNetwork *create_nn(uint ni, uint nh, uint no);
+NeuralNetwork *create_nn(size_t ni, size_t nh, size_t no);
 int destroy_nn(NeuralNetwork *nn);
 Matrix *sigmoid(Matrix *m);
 Matrix *gradients(Matrix *m);

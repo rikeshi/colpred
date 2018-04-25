@@ -1,6 +1,6 @@
 #include "nn.h"
 
-NeuralNetwork *create_nn(uint ni, uint nh, uint no) {
+NeuralNetwork *create_nn(size_t ni, size_t nh, size_t no) {
     NeuralNetwork *nn = malloc(sizeof(NeuralNetwork));
     nn->lr = 0.1;
     nn->ni = ni;
